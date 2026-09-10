@@ -1,15 +1,17 @@
 const projects = [
   {
     title: "Structural Analysis & Design",
-    tool: "ETABS",
-    description:
-      "Structural modeling, seismic analysis, reinforced concrete design, and evaluation against relevant engineering standards (NBC 105, IS 456, IS 875, IS 13920).",
+    software: "ETABS",
+    type: "Structural Analysis & Design",
+    standards: "NBC 105, IS 456, IS 875, IS 13920",
+    focus: "Seismic analysis, reinforced concrete design",
   },
   {
     title: "Koshi River Basin Flood Risk Analysis",
-    tool: "QGIS",
-    description:
-      "GIS-based spatial analysis using DEM and rainfall data to study and map flood risk across the Koshi River Basin.",
+    software: "QGIS",
+    type: "GIS / Flood Risk Analysis",
+    standards: "—",
+    focus: "Spatial analysis, DEM and rainfall data",
   },
 ];
 
@@ -32,37 +34,37 @@ const focusAreas = [
   },
 ];
 
+function SectionLabel(props) {
+  return (
+    <p className="font-mono text-xs text-gray-400 tracking-widest mb-4">
+      {props.children}
+    </p>
+  );
+}
+
 export default function Home() {
   return (
     <main>
-      <section className="relative overflow-hidden border-b border-gray-100">
-        <div
-          className="absolute inset-0 opacity-[0.04] pointer-events-none"
-          style={{
-            backgroundImage:
-              "linear-gradient(to right, #1d4ed8 1px, transparent 1px), linear-gradient(to bottom, #1d4ed8 1px, transparent 1px)",
-            backgroundSize: "40px 40px",
-          }}
-        />
-        <div className="relative max-w-5xl mx-auto px-6 md:px-0 pt-28 pb-24">
-          <p className="text-sm font-medium text-blue-700 mb-4 tracking-wide uppercase">
-            Civil Engineering • Structural Analysis & Design • GIS • Digital
+      <section className="border-b border-gray-100">
+        <div className="max-w-4xl mx-auto px-6 md:px-10 pt-28 pb-28">
+          <p className="font-mono text-xs text-gray-400 tracking-widest uppercase mb-6 fade-in">
+            Civil Engineering · Structural Analysis & Design · GIS · Digital
             Engineering
           </p>
-          <h1 className="text-4xl md:text-6xl font-bold tracking-tight mb-6 leading-tight">
+          <h1 className="text-5xl md:text-7xl font-bold tracking-tight mb-6 leading-[1.05] fade-in-delay-1">
             Nikesh Giri
           </h1>
-          <p className="text-xl md:text-2xl text-gray-700 font-medium mb-6">
+          <p className="text-xl md:text-2xl text-gray-700 font-medium mb-8 max-w-2xl fade-in-delay-1">
             Civil Engineering Graduate — Aspiring Structural Engineer
           </p>
-          <p className="text-gray-600 leading-relaxed max-w-xl mb-10">
+          <p className="text-gray-600 leading-relaxed max-w-xl mb-10 fade-in-delay-2">
             I am a Civil Engineering graduate from Pulchowk Campus with a strong
             interest in structural analysis and design. I enjoy working on
             engineering problems that combine structural theory, computational
             tools, and real-world data, from seismic structural modeling to
             GIS-based flood risk mapping.
           </p>
-          <div className="flex flex-wrap gap-4">
+          <div className="flex flex-wrap gap-4 fade-in-delay-2">
             <a
               href="/projects"
               className="px-6 py-3 bg-black text-white rounded-full font-medium hover:bg-gray-800 transition"
@@ -85,8 +87,9 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="max-w-5xl mx-auto px-6 md:px-0 py-20 border-b border-gray-100">
-        <h2 className="text-2xl font-semibold mb-4">About</h2>
+      <section className="max-w-4xl mx-auto px-6 md:px-10 py-20 border-b border-gray-100">
+        <SectionLabel>About</SectionLabel>
+        <h2 className="text-2xl font-semibold mb-4">A brief introduction</h2>
         <p className="text-gray-600 leading-relaxed max-w-2xl mb-6">
           I completed my Bachelor&apos;s degree in Civil Engineering at Pulchowk
           Campus, Tribhuvan University. My core interest lies in structural
@@ -95,53 +98,87 @@ export default function Home() {
           like building projects that let me apply engineering standards and
           analysis tools to realistic scenarios.
         </p>
-        <a href="/about" className="text-blue-700 font-medium hover:underline">
+        <a
+          href="/about"
+          className="text-black font-medium underline underline-offset-4 hover:text-gray-600"
+        >
           View About →
         </a>
       </section>
 
-      <section className="max-w-5xl mx-auto px-6 md:px-0 py-20 border-b border-gray-100">
-        <h2 className="text-2xl font-semibold mb-10">Featured Projects</h2>
+      <section className="max-w-4xl mx-auto px-6 md:px-10 py-20 border-b border-gray-100">
+        <SectionLabel>Featured Projects</SectionLabel>
+        <h2 className="text-2xl font-semibold mb-10">
+          Engineering case studies
+        </h2>
         <div className="grid md:grid-cols-2 gap-6">
           {projects.map((p) => (
             <div
               key={p.title}
-              className="p-6 rounded-2xl border border-gray-100 hover:shadow-md transition"
+              className="rounded-2xl border border-gray-200 overflow-hidden hover:shadow-md transition"
             >
-              <p className="text-xs font-medium text-blue-700 uppercase tracking-wide mb-2">
-                {p.tool}
-              </p>
-              <h3 className="font-semibold text-lg mb-2">{p.title}</h3>
-              <p className="text-sm text-gray-600 leading-relaxed">
-                {p.description}
-              </p>
+              <div className="aspect-video bg-gray-50 border-b border-gray-100 flex items-center justify-center">
+                <span className="font-mono text-xs text-gray-300 tracking-wide">
+                  IMAGE PLACEHOLDER
+                </span>
+              </div>
+              <div className="px-6 pt-5 pb-4 border-b border-gray-100">
+                <p className="font-mono text-xs text-gray-400 uppercase tracking-wide mb-2">
+                  {p.software}
+                </p>
+                <h3 className="font-semibold text-lg">{p.title}</h3>
+              </div>
+              <div className="px-6 py-5 text-sm">
+                <div className="grid grid-cols-3 gap-y-2">
+                  <span className="text-gray-400 font-mono text-xs col-span-1">
+                    TYPE
+                  </span>
+                  <span className="text-gray-700 col-span-2">{p.type}</span>
+
+                  <span className="text-gray-400 font-mono text-xs col-span-1">
+                    STANDARDS
+                  </span>
+                  <span className="text-gray-700 col-span-2">
+                    {p.standards}
+                  </span>
+
+                  <span className="text-gray-400 font-mono text-xs col-span-1">
+                    FOCUS
+                  </span>
+                  <span className="text-gray-700 col-span-2">{p.focus}</span>
+                </div>
+              </div>
             </div>
           ))}
         </div>
         <a
           href="/projects"
-          className="inline-block mt-8 text-blue-700 font-medium hover:underline"
+          className="inline-block mt-8 text-black font-medium underline underline-offset-4 hover:text-gray-600"
         >
           View All Projects →
         </a>
       </section>
 
-      <section className="max-w-5xl mx-auto px-6 md:px-0 py-20 border-b border-gray-100">
-        <h2 className="text-2xl font-semibold mb-10">Technical Focus</h2>
-        <div className="grid sm:grid-cols-2 md:grid-cols-4 gap-6">
-          {focusAreas.map((f) => (
+      <section className="max-w-4xl mx-auto px-6 md:px-10 py-20 border-b border-gray-100">
+        <SectionLabel>Technical Focus</SectionLabel>
+        <h2 className="text-2xl font-semibold mb-10">Areas of focus</h2>
+        <div className="divide-y divide-gray-100 border-t border-b border-gray-100">
+          {focusAreas.map((f, i) => (
             <div
               key={f.title}
-              className="p-5 rounded-xl border border-gray-100"
+              className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-6 py-5"
             >
-              <h3 className="font-medium mb-2 text-sm">{f.title}</h3>
-              <p className="text-xs text-gray-600 leading-relaxed">{f.desc}</p>
+              <span className="font-mono text-xs text-gray-400 w-10 shrink-0">
+                {String(i + 1).padStart(2, "0")}
+              </span>
+              <span className="font-medium w-56 shrink-0">{f.title}</span>
+              <span className="text-sm text-gray-600">{f.desc}</span>
             </div>
           ))}
         </div>
       </section>
 
-      <section className="max-w-5xl mx-auto px-6 md:px-0 py-24 text-center">
+      <section className="max-w-4xl mx-auto px-6 md:px-10 py-28 text-center">
         <h2 className="text-2xl md:text-3xl font-semibold mb-4">
           Interested in working together or discussing an engineering project?
         </h2>
